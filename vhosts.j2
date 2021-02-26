@@ -2,7 +2,7 @@
 <VirtualHost *:80>
   ServerName {{ vhost.servername }}
   DocumentRoot {{ vhost.documentroot }}
-  {% if serveradmin %}
+  {% if vhost.serveradmin %}
   ServerAdmin {{ vhost.serveradmin }}
   {% endif %}
   <Directory  {{ vhost.directorypath }} >
