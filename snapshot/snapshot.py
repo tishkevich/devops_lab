@@ -27,7 +27,7 @@ class Snapshot:
     def write_file(self, snapshot_number=1, filename="snapshot.txt"):
         data = self.get_state()
         out_string = "SNAPSHOT " + str(snapshot_number) + ": " + str(data[0]) + ": "\
-                     + ", ".join(map(str, data[1:])) + " "
+                     + ", ".join(map(str, data[1:])) + "\n"
         with open(filename, 'a') as out:
             out.write(out_string)
 
@@ -37,7 +37,7 @@ class Snapshot:
                    "net_packets_sent", "net_packets_recv")
         data = {"SNAPSHOT " + str(snapshot_number): dict(zip(columns, raw_data))}
         with open(filename, 'a') as out:
-            json.dump(data, out)
+            json.dump(data, out, indent=2)
 
     def run(self):
         i = 1
